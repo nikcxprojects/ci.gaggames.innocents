@@ -46,7 +46,7 @@ public class Ball : MonoBehaviour
             Velocity = toInput;
             transform.up = toInput;
 
-            Physics2D.gravity = new Vector2(Velocity.x > 0 ? -2.8f : 2.8f, 0.5f);
+            Physics2D.gravity = new Vector2(-Mathf.Sign(Velocity.x) * 13, 0.5f);
 
             for (int i = 0; i < Positions.Length; i++)
             {
@@ -67,5 +67,10 @@ public class Ball : MonoBehaviour
     private Vector2 DotPositionByTime(float t)
     {
         return (Vector2)transform.position + (Velocity * launchForce * t) + 0.5f * Physics2D.gravity * Mathf.Pow(t, 2);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Physics2D.gravity = Vector2.down * 9.8f;
     }
 }
