@@ -7,7 +7,6 @@ public class Ball : MonoBehaviour
     private Rigidbody2D Rigidbody { get; set; }
     private LineRenderer LineRenderer { get; set; }
 
-    private GameObject DotPrefab { get; set; }
 
     [SerializeField] float launchForce;
     [SerializeField] int numOfDots;
@@ -19,7 +18,7 @@ public class Ball : MonoBehaviour
     {
         _camera = Camera.main;
         Rigidbody = GetComponent<Rigidbody2D>();
-        LineRenderer = GetComponentInChildren<LineRenderer>();
+        LineRenderer = FindObjectOfType<LineRenderer>();
 
         Positions = new Vector3[numOfDots];
     }
@@ -47,7 +46,7 @@ public class Ball : MonoBehaviour
             Velocity = toInput;
             transform.up = toInput;
 
-            Physics2D.gravity = new Vector2(Velocity.x > 0 ? -9.8f : 9.8f, 0);
+            Physics2D.gravity = new Vector2(Velocity.x > 0 ? -2.8f : 2.8f, 0.5f);
 
             for (int i = 0; i < Positions.Length; i++)
             {
@@ -61,7 +60,7 @@ public class Ball : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Rigidbody.isKinematic = false;
-            Rigidbody.AddForce(transform.up * launchForce, ForceMode2D.Impulse);
+            Rigidbody.AddForce(Velocity * launchForce, ForceMode2D.Impulse);
         }
     }
 
