@@ -5,13 +5,28 @@ public class Ball : MonoBehaviour
     private Camera _camera;
     private Vector2 Velocity { get; set; }
     private Rigidbody2D Rigidbody { get; set; }
+    private LineRenderer LineRenderer { get; set; }
+
+    private GameObject DotPrefab { get; set; }
 
     [SerializeField] float launchForce;
+    [SerializeField] int numOfDots;
+    [SerializeField] float offset;
+
+    private Vector3[] Positions { get; set; }
 
     private void Awake()
     {
         _camera = Camera.main;
         Rigidbody = GetComponent<Rigidbody2D>();
+        LineRenderer = GetComponentInChildren<LineRenderer>();
+
+        Positions = new Vector3[numOfDots];
+    }
+
+    private void Start()
+    {
+        Rigidbody.isKinematic = true;
     }
 
     private void Update()
@@ -31,12 +46,27 @@ public class Ball : MonoBehaviour
 
             Velocity = toInput;
             transform.up = toInput;
+
+            Physics2D.gravity = new Vector2(Velocity.x > 0 ? -9.8f : 9.8f, 0);
+
+            for (int i = 0; i < Positions.Length; i++)
+            {
+                Positions[i] = DotPositionByTime(i * offset);
+            }
+
+            LineRenderer.positionCount = Positions.Length;
+            LineRenderer.SetPositions(Positions);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Physics2D.gravity = new Vector2(Velocity.x > 0 ? -9.8f : 9.8f, 0);
+            Rigidbody.isKinematic = false;
             Rigidbody.AddForce(transform.up * launchForce, ForceMode2D.Impulse);
         }
+    }
+
+    private Vector2 DotPositionByTime(float t)
+    {
+        return (Vector2)transform.position + (Velocity * launchForce * t) + 0.5f * Physics2D.gravity * Mathf.Pow(t, 2);
     }
 }
