@@ -35,7 +35,7 @@ public class Ball : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0))
+        if (InteractionArea.IsPressing && Rigidbody.isKinematic)
         {
             Vector2 toInput = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             toInput.Normalize();
@@ -46,7 +46,7 @@ public class Ball : MonoBehaviour
             Velocity = toInput;
             transform.up = toInput;
 
-            Physics2D.gravity = new Vector2(-Mathf.Sign(Velocity.x) * 13, 0.5f);
+            Physics2D.gravity = new Vector2(-Mathf.Sign(Velocity.x) * 13, 0);
 
             for (int i = 0; i < Positions.Length; i++)
             {
@@ -56,12 +56,17 @@ public class Ball : MonoBehaviour
             LineRenderer.positionCount = Positions.Length;
             LineRenderer.SetPositions(Positions);
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+    public void Pull()
+    {
+        if(!Rigidbody.isKinematic)
         {
-            Rigidbody.isKinematic = false;
-            Rigidbody.AddForce(Velocity * launchForce, ForceMode2D.Impulse);
+            return;
         }
+
+        Rigidbody.isKinematic = false;
+        Rigidbody.AddForce(Velocity * launchForce, ForceMode2D.Impulse);
     }
 
     private Vector2 DotPositionByTime(float t)
