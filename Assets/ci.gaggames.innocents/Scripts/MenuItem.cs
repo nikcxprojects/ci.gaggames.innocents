@@ -26,7 +26,7 @@ public class MenuItem : MonoBehaviour
     {
         IsEnable = false;
 
-        transform.position += Vector3.down * 1000.0f;
+        transform.position += Vector3.down * 3000.0f;
         Velocity = Vector2.zero;
 
         StartCoroutine(nameof(Delay));

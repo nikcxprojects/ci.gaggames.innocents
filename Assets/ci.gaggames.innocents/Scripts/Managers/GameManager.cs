@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
 
     private GameObject LevelRef { get; set; }
 
+    private void Awake()
+    {
+        OpenGame(false);
+    }
+
     public void OpenBestScore(bool IsOpen)
     {
         menu.SetActive(!IsOpen);
@@ -40,6 +45,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if(!LevelRef)
+            {
+                return;
+            }
+
             Destroy(LevelRef);
             IsPause = false;
         }
