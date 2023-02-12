@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    private Vector2 InitPosition { get; set; }
+
     private Camera _camera;
     private Vector2 Velocity { get; set; }
     private Rigidbody2D Rigidbody { get; set; }
@@ -16,6 +18,8 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
+        InitPosition = transform.position;
+
         _camera = Camera.main;
         Rigidbody = GetComponent<Rigidbody2D>();
         LineRenderer = FindObjectOfType<LineRenderer>();
@@ -67,6 +71,19 @@ public class Ball : MonoBehaviour
 
         Rigidbody.isKinematic = false;
         Rigidbody.AddForce(Velocity * launchForce, ForceMode2D.Impulse);
+
+        Invoke(nameof(ResetMe), 2.0f);
+    }
+
+    private void ResetMe()
+    {
+        Rigidbody.isKinematic = true;
+
+        Rigidbody.velocity = Vector2.zero;
+        Rigidbody.angularVelocity = 0;
+
+        transform.position = InitPosition;
+        LineRenderer.positionCount = 0;
     }
 
     private Vector2 DotPositionByTime(float t)
