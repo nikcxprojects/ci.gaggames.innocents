@@ -12,6 +12,11 @@ public class SoundBtn : MonoBehaviour
         Text = Button.GetComponentInChildren<Text>();
     }
 
+    private void OnEnable()
+    {
+        Text.text = $"Sound: {(AudioListener.pause ? "off" : "on")}";
+    }
+
     private void Start()
     {
         Button.onClick.AddListener(() =>

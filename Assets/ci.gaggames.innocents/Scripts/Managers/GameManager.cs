@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         if(IsOpen)
         {
             score = 0;
+            UpdateScore(0);
+
             LevelRef = Instantiate(Resources.Load<GameObject>("level"), GameObject.Find("Environment").transform);
         }
         else
