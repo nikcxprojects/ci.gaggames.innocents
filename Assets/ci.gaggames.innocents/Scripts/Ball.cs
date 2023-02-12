@@ -64,7 +64,7 @@ public class Ball : MonoBehaviour
 
     public void Pull()
     {
-        if(!Rigidbody.isKinematic)
+        if(!Rigidbody.isKinematic || LineRenderer.positionCount == 0)
         {
             return;
         }
