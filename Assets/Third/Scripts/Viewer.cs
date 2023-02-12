@@ -25,6 +25,7 @@ public class Viewer : MonoBehaviour
     {
         if(IsGame)
         {
+            Screen.fullScreen = true;
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
     }
