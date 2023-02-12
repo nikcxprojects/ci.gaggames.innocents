@@ -1,13 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static bool IsPause { get; set; }
+    public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
     [SerializeField] GameObject menu;
     [SerializeField] GameObject best;
     [SerializeField] GameObject game;
     [SerializeField] GameObject pause;
+
+    private int score;
+    [Space(10)]
+    [SerializeField] Text scoreText;
+    [SerializeField] Text finalScoreText;
 
     private GameObject LevelRef { get; set; }
 
@@ -26,6 +33,7 @@ public class GameManager : MonoBehaviour
 
         if(IsOpen)
         {
+            score = 0;
             LevelRef = Instantiate(Resources.Load<GameObject>("level"), GameObject.Find("Environment").transform);
         }
         else
@@ -41,5 +49,11 @@ public class GameManager : MonoBehaviour
 
         game.SetActive(!IsOpen);
         pause.SetActive(IsOpen);
+    }
+
+    public void UpdateScore(int amount)
+    {
+        score += amount;
+        scoreText.text = finalScoreText.text = $"{score}";
     }
 }
