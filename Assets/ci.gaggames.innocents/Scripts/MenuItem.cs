@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MenuItem : MonoBehaviour
 {
-    private static float smootTime = 0.1f;
+    private static float smoothTime = 0.1f;
 
     private Vector2 Velocity = Vector2.zero;
     private Vector2 TargetPosition;
@@ -13,7 +13,7 @@ public class MenuItem : MonoBehaviour
     IEnumerator Delay()
     {
         int id = transform.GetSiblingIndex();
-        yield return new WaitForSeconds(id * smootTime);
+        yield return new WaitForSeconds(id * smoothTime);
         IsEnable = true;
     }
 
@@ -44,6 +44,6 @@ public class MenuItem : MonoBehaviour
             return;
         }
 
-        transform.position = Vector2.SmoothDamp(transform.position, TargetPosition, ref Velocity, smootTime);
+        transform.position = Vector2.SmoothDamp(transform.position, TargetPosition, ref Velocity, smoothTime);
     }
 }

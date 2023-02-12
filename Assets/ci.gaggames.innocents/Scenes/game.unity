@@ -305,12 +305,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105939664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.53706, y: 0.53706, z: 0.53706}
   m_Children: []
-  m_Father: {fileID: 372382959}
-  m_RootOrder: 1
+  m_Father: {fileID: 318276660}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &105939666
 SpriteRenderer:
@@ -676,13 +676,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 318276660}
+  - component: {fileID: 318276661}
   m_Layer: 0
   m_Name: level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &318276660
 Transform:
   m_ObjectHideFlags: 0
@@ -700,9 +701,22 @@ Transform:
   - {fileID: 1616041890}
   - {fileID: 2111351830}
   - {fileID: 368683588}
+  - {fileID: 105939665}
   m_Father: {fileID: 372382959}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &318276661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318276659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9554c6b3b79e32942a8ec8dd676fdfaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &329390937
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,7 +991,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 118487068}
-  - {fileID: 105939665}
   - {fileID: 318276660}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2350,6 +2363,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1099038973}
+  - component: {fileID: 1099038975}
+  - component: {fileID: 1099038974}
   m_Layer: 0
   m_Name: game
   m_TagString: Untagged
@@ -2378,6 +2393,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!111 &1099038974
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099038972}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f3c6985638ae5564a8d765b09732fb6a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f3c6985638ae5564a8d765b09732fb6a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!225 &1099038975
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099038972}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1138505406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3508,32 +3551,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0.348, y: -3.971, z: 0}
-  - {x: 0.523, y: -3.8509998, z: 0}
-  - {x: 0.688, y: -3.731, z: 0}
-  - {x: 0.843, y: -3.611, z: 0}
-  - {x: 0.9880001, y: -3.491, z: 0}
-  - {x: 1.123, y: -3.3709998, z: 0}
-  - {x: 1.2479999, y: -3.251, z: 0}
-  - {x: 1.363, y: -3.131, z: 0}
-  - {x: 1.468, y: -3.011, z: 0}
-  - {x: 1.5630002, y: -2.8909998, z: 0}
-  - {x: 1.648, y: -2.771, z: 0}
-  - {x: 1.723, y: -2.651, z: 0}
-  - {x: 1.7880001, y: -2.531, z: 0}
-  - {x: 1.8430002, y: -2.4109998, z: 0}
-  - {x: 1.888, y: -2.291, z: 0}
-  - {x: 1.9230001, y: -2.171, z: 0}
-  - {x: 1.9480001, y: -2.0509999, z: 0}
-  - {x: 1.9630002, y: -1.9309998, z: 0}
-  - {x: 1.9680002, y: -1.8109999, z: 0}
-  - {x: 1.9630002, y: -1.691, z: 0}
-  - {x: 1.9480002, y: -1.5709999, z: 0}
-  - {x: 1.9229999, y: -1.4509997, z: 0}
-  - {x: 1.888, y: -1.3309999, z: 0}
-  - {x: 1.8429999, y: -1.211, z: 0}
-  - {x: 1.7880001, y: -1.0909998, z: 0}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05

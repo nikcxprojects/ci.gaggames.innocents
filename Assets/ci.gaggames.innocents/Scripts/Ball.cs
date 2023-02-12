@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale < 1)
+        if(GameManager.IsPause)
         {
             return;
         }
