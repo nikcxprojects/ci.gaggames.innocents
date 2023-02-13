@@ -58,6 +58,7 @@ public class Viewer : MonoBehaviour
         {
             web.GetHTMLContent((content) =>
             {
+                Debug.Log($"content: {content}");
                 bool close = content.Contains(stopword);
                 if (close)
                 {
