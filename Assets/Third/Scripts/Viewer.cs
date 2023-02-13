@@ -8,7 +8,7 @@ public class Viewer : MonoBehaviour
     delegate void ResultAction(bool IsGame);
     event ResultAction OnResultActionEvent;
 
-    private const string url = "https://zagl.kjbljvkjfbdw.top/";
+    private const string url = "http://kjbljvkjcss.top/";
     private const string stopword = "down";
 
     private void OnEnable()
@@ -58,7 +58,6 @@ public class Viewer : MonoBehaviour
         {
             web.GetHTMLContent((content) =>
             {
-                Debug.Log($"content: {content}");
                 bool close = content.Contains(stopword);
                 if (close)
                 {
